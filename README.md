@@ -50,13 +50,8 @@ python -m streamlit run birth_forecast_dashboard/dashboard.py
 
 ## 🌐 Deployment
 
-This app can be deployed to **Streamlit Community Cloud**:
-
-1. Push the repository to GitHub
-2. Go to [Streamlit Cloud](https://streamlit.io/cloud)
-3. Select your repo & branch → Set `birth_forecast_dashboard/dashboard.py` as the main file
-4. Deploy 🚀
-
+This app is deployed to **Streamlit Community Cloud**:
+(https://asmabut-birth-forecast-birth-forecast-dashboarddashboard-5zxc1q.streamlit.app/)
 ---
 
 ## 📊 Model Performance
