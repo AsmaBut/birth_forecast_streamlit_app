@@ -2,27 +2,20 @@ import streamlit as st
 import pandas as pd
 import joblib
 import numpy as np
+import os
 
 # -------------------------------
 # 1️⃣ Load Model & Feature List
 # -------------------------------
 st.title("📊 Birth Forecast Dashboard")
 
-try:
-    import os
-
 BASE_DIR = os.path.dirname(__file__)  # folder where dashboard.py is located
 model_path = os.path.join(BASE_DIR, "best_model.pkl")
 features_path = os.path.join(BASE_DIR, "model_features.pkl")
 
 try:
-    model = joblib.load(model_path)
-    feature_names = joblib.load(features_path)
-    st.success("✅ Model & features loaded successfully!")
-except Exception as e:
-    st.error(f"❌ Error loading model or features: {e}")
-    st.stop()
-
+    model = joblib.load(model_path)  # Load trained XGBoost model
+    feature_names = joblib.load(features_path)  # Load feature names
     st.success("✅ Model & features loaded successfully!")
 except Exception as e:
     st.error(f"❌ Error loading model or features: {e}")
@@ -43,7 +36,6 @@ induction = st.number_input("Induction %", value=20.0)
 # -------------------------------
 # 3️⃣ Create Full Feature DataFrame
 # -------------------------------
-# Start with all zeros
 input_data = pd.DataFrame(np.zeros((1, len(feature_names))), columns=feature_names)
 
 # Fill only key features
