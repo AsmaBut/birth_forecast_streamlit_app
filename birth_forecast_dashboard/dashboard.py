@@ -9,8 +9,20 @@ import numpy as np
 st.title("📊 Birth Forecast Dashboard")
 
 try:
-    model = joblib.load("best_model.pkl")  # Trained XGBoost model
-    feature_names = joblib.load("model_features.pkl")  # List of 215 features
+    import os
+
+BASE_DIR = os.path.dirname(__file__)  # folder where dashboard.py is located
+model_path = os.path.join(BASE_DIR, "best_model.pkl")
+features_path = os.path.join(BASE_DIR, "model_features.pkl")
+
+try:
+    model = joblib.load(model_path)
+    feature_names = joblib.load(features_path)
+    st.success("✅ Model & features loaded successfully!")
+except Exception as e:
+    st.error(f"❌ Error loading model or features: {e}")
+    st.stop()
+
     st.success("✅ Model & features loaded successfully!")
 except Exception as e:
     st.error(f"❌ Error loading model or features: {e}")
